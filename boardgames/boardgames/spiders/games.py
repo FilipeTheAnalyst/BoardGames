@@ -16,11 +16,11 @@ class GamesSpider(scrapy.Spider):
             items['url'] = base_url + game.css("#row_ a::attr(href)").get()
             items['rating'] = game.css(
                 "#row_ .collection_bggrating:nth-child(5)::text").get().split()[0]
-            items['num_voters'] = response.css(
+            items['num_voters'] = game.css(
                 "td.collection_bggrating ::text")[2].get()
-            items['year'] = int(response.css(
+            items['year'] = int(game.css(
                 "span.smallerfont.dull ::text").get()[1:-1])
-            items['description'] = response.css(
+            items['description'] = game.css(
                 "p.smallefont.dull ::text").get().replace("\n", "").replace("\t", "")
             yield items
 
