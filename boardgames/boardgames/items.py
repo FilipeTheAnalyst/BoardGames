@@ -8,5 +8,12 @@ import scrapy
 
 class BoardgamesItem(scrapy.Item):
     # define the fields for your item here like:
-    # name = scrapy.Field()
+    id = scrapy.Field()
+    rank = scrapy.Field()
+    name = scrapy.Field()
+    url = scrapy.Field()
+    rating = scrapy.Field()
+    num_voters = scrapy.Field()
+    year = scrapy.Field()
+    description = scrapy.Field()
     pass
