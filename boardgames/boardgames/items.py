@@ -15,5 +15,4 @@ class BoardgamesItem(scrapy.Item):
     rating = scrapy.Field()
     num_voters = scrapy.Field()
     year = scrapy.Field()
-    description = scrapy.Field()
-    pass
+    details = scrapy.Field()
