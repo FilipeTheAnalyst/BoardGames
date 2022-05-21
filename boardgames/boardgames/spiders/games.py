@@ -16,13 +16,22 @@ class GamesSpider(scrapy.Spider):
             items['url'] = base_url + game.css("#row_ a::attr(href)").get()
             items['rating'] = game.css(
                 "#row_ .collection_bggrating:nth-child(5)::text").get().split()[0]
-            items['num_voters'] = int(game.css(
-                "td.collection_bggrating ::text")[2].get().replace("\n", "").replace("\t", ""))
-            items['year'] = int(game.css(
-                "span.smallerfont.dull ::text").get()[1:-1])
-            items['details'] = game.css(
-                "p.smallefont.dull ::text").get().replace("\n", "").replace("\t", "")
-        yield items
+            try:
+                items['num_voters'] = int(game.css(
+                    "td.collection_bggrating ::text")[2].get().replace("\n", "").replace("\t", ""))
+            except:
+                print('N/A')
+            try:
+                items['year'] = int(game.css(
+                    "span.smallerfont.dull ::text").get()[1:-1])
+            except:
+                print('N/A')
+            try:
+                items['details'] = game.css(
+                    "p.smallefont.dull ::text").get().replace("\n", "").replace("\t", "")
+            except:
+                print('N/A')
+            yield items
 
         next_page = response.css('a[title="next page"] ::attr(href)').get()
         if next_page is not None:

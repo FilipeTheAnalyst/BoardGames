@@ -25,12 +25,12 @@ class BoardgamesPipeline:
         rating FLOAT,
         num_voters REAL,
         year REAL,
-        description VARCHAR(255)
+        details VARCHAR(255)
         )""")
 
     def process_item(self, item, spider):
         self.cur.execute("""INSERT OR IGNORE INTO games VALUES (?,?,?,?,?,?,?,?)""",
                          (item['id'], item['rank'], item['name'], item['url'], item['rating'],
-                          item['num_voters'], item['year'], item['description']))
+                          item['num_voters'], item['year'], item['details']))
         self.con.commit()
         return item
