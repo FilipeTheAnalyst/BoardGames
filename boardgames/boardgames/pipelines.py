@@ -11,8 +11,7 @@ import sqlite3
 
 class BoardgamesPipeline:
     def __init__(self):
-        self.con = sqlite3.connect(
-            'C:/Users/u10054206/OneDrive - NOS SGPS, S.A/Carreira/Portfolio/Python Projects/Scrapy/boardgames/boardgames.db')
+        self.con = sqlite3.connect('boardgames.db')
         self.cur = self.con.cursor()
         self.create_table()
 
